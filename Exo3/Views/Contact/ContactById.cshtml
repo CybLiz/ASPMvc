@@ -1,0 +1,26 @@
+@model Exo3.Models.Contact
+
+@{
+    ViewData["Title"] = "Détails du contact";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Contact @Model.Id
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">@Model.Nom</h5>
+
+            <p class="card-text">
+                <strong>Email :</strong> @Model.Email <br />
+                <strong>Téléphone :</strong> @Model.Telephone
+            </p>
+
+            <a href="/Contact/Contacts" class="btn btn-primary">
+                Retour à la liste
+            </a>
+        </div>
+    </div>
+</div>
