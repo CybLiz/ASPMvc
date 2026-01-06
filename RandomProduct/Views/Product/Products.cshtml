@@ -23,7 +23,14 @@
                     <td>@p.Name</td>
                     <td>@p.Price</td>
                     <td>@p.Stock</td>
+                    <td>
+ <a href="/Product/DeleteProduct/@p.Id" class="btn btn-danger">
+        Delete
+    </a>
+                    </td>
+
                 </tr>
+             
             }
         </tbody>
     </table>

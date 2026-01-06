@@ -25,7 +25,7 @@ namespace RandomProduct.Controllers
         {
             var product = products.FirstOrDefault(p => p.Id == id);
             if (product == null)
-                return NotFound("Produit non trouvé");
+                return NotFound("Product not found");
             return View(product);
         }
 
@@ -52,7 +52,7 @@ namespace RandomProduct.Controllers
         {
             var product = products.FirstOrDefault(p => p.Id == id);
             if (product == null)
-                return NotFound("Produit non trouvé");
+                return NotFound("Product not found");
             products.Remove(product);
             return RedirectToAction("Products");
         }
