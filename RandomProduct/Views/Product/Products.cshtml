@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Products list";
+    var products = ViewBag.Products;
+}
+
+<div class="container mt-4">
+    <h2>Products list</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in products)
+            {
+                <tr>
+                    <th scope="row">@p.Id</th>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                    <td>@p.Stock</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <form method="post" action="/Product/CreateRandomProduct" class="mt-3">
+        <button type="submit" class="btn btn-primary">
+            Generate a random product
+        </button>
+    </form>
+
+</div>

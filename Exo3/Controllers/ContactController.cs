@@ -38,9 +38,6 @@ namespace Exo3.Controllers
         }
 
         // Creation d'un nouveau contact
-
-
-        // Creation d'un nouveau contact
         /*   [HttpPost]
            public IActionResult Form(string Email, string Password)
            {
