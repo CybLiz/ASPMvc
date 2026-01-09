@@ -1,0 +1,70 @@
+@model List<CaisseEnregistreuse.Models.Product>
+
+@{
+    ViewData["Title"] = "Products list";
+    // var products = ViewBag.Products;
+    bool isAdmin = User.IsInRole("Admin");
+    bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
+}
+
+<div class="container mt-4">
+    <h2>Products list</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <th scope="row">@p.Id</th>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                    <td>@p.Stock</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-info btn-sm">
+                            Details
+                        </a>
+
+                        @if (isAuthenticated && !isAdmin)
+                        {
+                            <form asp-controller="Cart" asp-action="Add" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="productId" value="@p.Id" />
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    Add to Cart
+                                </button>
+                            </form>
+                        }
+
+                        @if (isAdmin)
+                        {
+                            <a asp-action="Update" asp-route-id="@p.Id" class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@p.Id"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure?');">
+                                Delete
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+     @if (isAdmin)
+      {
+    <a href="/Product/Form/" class="btn btn-primary">
+        Add a product
+    </a>
+     }
+</div>

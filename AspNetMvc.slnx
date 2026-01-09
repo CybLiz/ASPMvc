@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="CaisseEnregistreuse/CaisseEnregistreuse.csproj" Id="7f6562e7-9cb3-455a-a652-3550c641872f" />
   <Project Path="Exo3/Exo3.csproj" Id="865c3ace-13f0-4306-9607-cd883411ecbc" />
   <Project Path="RandomProduct/RandomProduct.csproj" Id="4950245c-19ec-4290-bdb8-a95a65c660f3" />
   <Project Path="WebApplication1/WebApplication1.csproj" />

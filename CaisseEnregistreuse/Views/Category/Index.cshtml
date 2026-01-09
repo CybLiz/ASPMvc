@@ -1,0 +1,55 @@
+@model List<CaisseEnregistreuse.Models.Category>
+
+@{
+    ViewData["Title"] = "Category list";
+    bool isAdmin = User.IsInRole("Admin");
+    bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
+}
+
+<div class="container mt-4">
+    <h2>Categories list</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <th scope="row">@c.Id</th>
+                    <td>@c.Name</td>
+
+                    <td>
+                        @if (isAdmin)
+                        {
+                        <a href="/Category/Delete/@c.Id" class="btn btn-danger">
+                            Delete
+                        </a>
+
+                        <a href="/Category/Form/@c.Id" class="btn btn-success">
+                            Update
+                        </a>
+                        }
+
+                        <a href="/Category/Details/@c.Id" class="btn btn-info">
+                            Details
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+  @if (isAdmin)
+  {
+    <a href="/Category/Form/" class="btn btn-primary">
+        Add a category
+    </a>
+  }
+
+</div>

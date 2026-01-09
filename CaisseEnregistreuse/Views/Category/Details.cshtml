@@ -1,0 +1,39 @@
+@model CaisseEnregistreuse.Models.Category
+
+@{
+    ViewData["Title"] = "Category détails";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Category @Model.Id
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+
+            <p class="card-text">
+                <strong>Products :</strong><br />
+
+                @if (Model.Products != null && Model.Products.Any())
+                {
+                    foreach (var p in Model.Products)
+                    {
+                        <span>- @p.Name (@p.Price €)</span>
+                
+                        <br />
+                    }
+                }
+                else
+                {
+                    <span>No products in this category</span>
+                }
+            </p>
+
+            <a href="/Category/Index" class="btn btn-primary">
+                Back to categories
+            </a>
+        </div>
+    </div>
+</div>

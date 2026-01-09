@@ -1,0 +1,45 @@
+@model CaisseEnregistreuse.Models.Cart
+
+@{
+    ViewData["Title"] = "Panier";
+}
+
+<div class="container mt-4">
+    <h2>Mon panier</h2>
+
+    @if (Model == null || !Model.Items.Any())
+    {
+    <p>Le panier est vide.</p>
+    }
+    else
+    {
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+                {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Product.Price €</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Product.Price * item.Quantity) €</td>
+            </tr>
+                }
+        </tbody>
+    </table>
+   
+        <h4 class="mt-4">
+            Total : <strong>@Model.Total €</strong>
+        </h4>
+    }
+    <a href="/Product/Index/" class="btn btn-primary">
+        Go to products
+    </a>
+</div>
